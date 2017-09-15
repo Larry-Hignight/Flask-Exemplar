@@ -18,7 +18,6 @@ RUN pip install coverage
 
 COPY app /src/app
 copy run.py /src
-EXPOSE 5000
 ENTRYPOINT ["python", "/src/run.py"]
 
 
