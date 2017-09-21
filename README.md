@@ -6,18 +6,30 @@
 * [Mike Finley](https://github.com/michael-finley)
 
 
-## Example Usage
+## Example Docker Usage
 
 Issue the following commands to build and run the container:
 
-* sudo docker build --rm -t flask .
-* sudo docker run -p 80:5000 flask
+* docker build --rm -t flask .                             # Builds an image named flask
+* docker run -p 80:5000 flask                              # Container will be running on port 80
+* docker network inspect bridge                            # Inspect the network settings
 
-The hello world application will be available on port 80 of the host machine.
 
-* sudo docker network inspect bridge
+## Example Docker Swarm Usage
 
-Used to inspect the network settings.
+* docker stack deploy -c compose-file.yml flask_swarm      # Deploys a swarm named flask_swarm
+* docker container ls                                      # List the running containers
+* docker stack rm flask_swarm                              # Stops the swarm named flask_swarm
+* docker swarm init                                        # If you get the "this node is not a swarm manager"
+* ...                                                      # error when deploying the stack then issue this cmd
+
+
+## Example Multi-Node Swarm Setup
+
+* docker swarm init --advertise-addr <ip-addr>             # Init the swarm manager and copy the join info
+* docker swarm join --token <token> <mngr-ip-addr:port>    # Adds worker node to the swarm managed above
+* docker node ls                                           # List all nodes in the current swarm
+* docker stack ps <swarm-name>                             # List all containers in the swarm (across all nodes)
 
 
 ## AWS Checklist
@@ -29,11 +41,25 @@ Used to inspect the network settings.
 * Build and run the Docker container from the Flask-Examplar directory
 
 
-## TO DO
+## RDBMS Notes
 
-* Clean up the pip install portion of the Dockerfile
-* Incorporate additional functionality from Miguel's blog/book and PyCon 2016 talk.
-* Create a compose file
-* Push image to Dockerhub
-* Add the following return types to the view:  JSON, XML, PNG and JPEG.
+* docker exec -it <container> mysql -uroot -p     # Execute mysql client w/ a MySQL container
+* docker exec -it <container> psql -U postgres    # Execute psql client w/ a Postgres container
 
+
+## Change Log
+
+### Docker Related
+* DONE - Add compose file for MySQL
+* DONE - Add compose file for Postgres
+* TODO - Push image to Docker Hub
+* TODO - Clean up the pip install portion of the Dockerfile
+
+### Flask Related
+* TODO - Incorporate additional functionality from Miguel's blog/book and PyCon 2016 talk.
+* TODO - Add the following return types to the view:  JSON, XML, PNG and JPEG.
+
+### Misc
+* TODO - Create Behave scripts to populate the database and test the application stack
+* TODO - Create separate exemplars for the databases
+* TODO - Create NoSQL compose files
