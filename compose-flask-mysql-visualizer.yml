@@ -1,0 +1,35 @@
+version: "3"
+services:
+  flask:
+    image: flask
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          cpus: "0.2"
+          memory: 50M
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "80:5000"
+    networks:
+      - flasknet
+  mysql:
+    image: mysql/mysql-server
+    environment:
+      MYSQL_ROOT_PASSWORD: "12345678"
+    ports:
+      - "3306:3306"
+  visualizer:
+    image: dockersamples/visualizer:stable
+    ports:
+      - "8080:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+    networks:
+      - flasknet
+networks:
+  flasknet:
