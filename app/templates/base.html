@@ -1,13 +1,13 @@
 <html>
   <head>
     {% if title %}
-    <title>{{ title }} - supplied</title>
+    <title>{{ title }} - Example of supplied title</title>
     {% else %}
-    <title>Default Title</title>
+    <title>Flask Exemplar</title>
     {% endif %}
   </head>
   <body>
-    <div>Microblog: <a href="/index">Home</a></div>
+    <div>Flask Exemplar: <a href="/index">Home</a></div>
     <hr>
     {% block content %}{% endblock %}
   </body>
