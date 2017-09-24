@@ -17,7 +17,7 @@ Issue the following commands to build and run the container:
 
 ## Example Docker Swarm Usage
 
-* docker stack deploy -c compose-file.yml flask_swarm      # Deploys a swarm named flask_swarm
+* docker stack deploy -c <compose-file> flask_swarm      # Deploys a swarm named flask_swarm
 * docker container ls                                      # List the running containers
 * docker stack rm flask_swarm                              # Stops the swarm named flask_swarm
 * docker swarm init                                        # If you get the "this node is not a swarm manager"
@@ -52,11 +52,13 @@ Issue the following commands to build and run the container:
 ### Docker Related
 * DONE - Add compose file for MySQL
 * DONE - Add compose file for Postgres
+* TODO - Missing log output when run using "docker stack deploy"
 * TODO - Push image to Docker Hub
 * TODO - Clean up the pip install portion of the Dockerfile
 
 ### Flask Related
 * TODO - Incorporate additional functionality from Miguel's blog/book and PyCon 2016 talk.
+* TODO - The Flask-WTF and OpenID stuff in Chap 3 is dated and needs to be replaced.
 * TODO - Add the following return types to the view:  JSON, XML, PNG and JPEG.
 
 ### Misc
