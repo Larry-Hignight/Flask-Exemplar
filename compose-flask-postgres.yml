@@ -12,5 +12,7 @@ services:
       POSTGRES_PASSWORD: "12345678"
     ports:
       - "5432:5432"
+    networks:
+      - flasknet
 networks:
   flasknet:
