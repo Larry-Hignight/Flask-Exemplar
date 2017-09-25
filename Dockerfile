@@ -17,7 +17,7 @@ RUN pip install flipflop
 RUN pip install coverage
 
 COPY app /src/app
-copy run.py /src
+COPY run.py /src
+COPY config.py /src
 ENTRYPOINT ["python", "/src/run.py"]
-
 
