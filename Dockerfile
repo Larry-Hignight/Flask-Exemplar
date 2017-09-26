@@ -16,8 +16,9 @@ RUN pip install guess_language
 RUN pip install flipflop
 RUN pip install coverage
 
+RUN mkdir -p /src
 COPY run.py /src
 COPY config.py /src
 COPY app /src/app
 WORKDIR /src
-CMD ["python", "/src/run.py"]
+CMD ["python", "run.py"]
