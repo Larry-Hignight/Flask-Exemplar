@@ -16,8 +16,8 @@ RUN pip install guess_language
 RUN pip install flipflop
 RUN pip install coverage
 
-COPY app /src/app
 COPY run.py /src
 COPY config.py /src
-ENTRYPOINT ["python", "/src/run.py"]
-
+COPY app /src/app
+WORKDIR /src
+CMD ["python", "/src/run.py"]
