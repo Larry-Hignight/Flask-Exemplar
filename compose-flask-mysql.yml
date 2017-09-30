@@ -3,7 +3,7 @@ services:
   flask:
     image: flask
     deploy:
-      replicas: 2
+      replicas: 1
       resources:
         limits:
           cpus: "0.2"
@@ -17,6 +17,9 @@ services:
   mysql:
     image: mysql/mysql-server
     environment:
+      MYSQL_USER: "flask"
+      MYSQL_PASSWORD: "12345678"
+      MYSQL_DATABASE: "flask_data"
       MYSQL_ROOT_PASSWORD: "12345678"
     ports:
       - "3306:3306"
