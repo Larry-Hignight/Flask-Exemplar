@@ -17,8 +17,9 @@ Issue the following commands to build and run the container:
 
 ## Example Docker Swarm Usage
 
-* docker stack deploy -c <compose-file> flask_swarm      # Deploys a swarm named flask_swarm
+* docker stack deploy -c <compose-file> flask_swarm        # Deploys a swarm named flask_swarm
 * docker container ls                                      # List the running containers
+* docker stack logs -f <container-name>                    # Tail the logs for a given container
 * docker stack rm flask_swarm                              # Stops the swarm named flask_swarm
 * docker swarm init                                        # If you get the "this node is not a swarm manager"
 * ...                                                      # error when deploying the stack then issue this cmd
